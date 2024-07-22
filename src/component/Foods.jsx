@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { data } from '../data/Data'
 import Foodcard from './Foodcard'
 import { carti } from '../Context';
+import { AiOutlineNotification } from 'react-icons/ai';
 
 function Foods() {
   const[food,setfood]=useState(data);
@@ -16,22 +17,26 @@ function Foods() {
     }))
   }
  const {cartitems,setcartitems} =useContext(carti)  
-  
+  const[notification,setnotification]=useState('');
   
   
   const addtoarray=(newitem)=>{
     setcartitems((prev)=>{
       const exist=prev.findIndex((ne)=>{ return ne.name==newitem.name})
+      let updated
       if(exist===-1){
      
-       return [...prev,{...newitem,quant:1}]
+       updated= [...prev,{...newitem,quant:1}]
        
       }else{
-        const updatedform=[...prev];
-       updatedform[exist].quant+=1;
+         updated=[...prev];
+       updated[exist].quant+=1;
         
-        return updatedform
       }
+      setnotification(`"${newitem.name}" added to cart`)
+      setTimeout(() => setnotification(" ")
+        , (3000));
+      return updated
     })
   }
     
@@ -69,7 +74,12 @@ function Foods() {
       </div>
 
     ))}
-    </div></div>
+    </div>{notification && (
+      <div className="fixed bottom-4 right-4 bg-black text-white p-4 rounded-lg shadow-lg flex items-center">
+        <AiOutlineNotification size={24} className="mr-2" />
+        <p>{notification}</p>
+      </div>
+    )}</div>
   )
 }
 
