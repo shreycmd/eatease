@@ -77,7 +77,7 @@ useEffect(()=>{
       {/*cart button*/}
       <div  onClick={()=>(setcart(!cart))} className=" flex items-center  flex-wrap bg-black text-white rounded-full p-2 ">
         <AiOutlineShoppingCart size={25} />
-        <p className="uppercase text-md">cart</p>
+        <p className="uppercase text-md">cart {cartitems.length==0?null:cartitems.length}</p>
       </div>
       {cart ?(
         <div className="bg-black/80 fixed w-full h-screen z-10 top-0 left-0 duration-300"></div>

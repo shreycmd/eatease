@@ -39,9 +39,8 @@ function Foods() {
       return updated
     })
   }
-    
+    console.log(food);
   
-  console.log(cartitems)
   return (
     
     <div className='max-w-[1640px] mx-auto p-4'>
@@ -61,10 +60,10 @@ function Foods() {
     {/*filter price */}
     <div>
     <p className='font-bold text-gray-700'>Filter Price</p>
-    <button className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white' onClick={()=> filterPrice("₹200","₹0")}>Below ₹200</button>
-    <button className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white' onClick={()=> filterPrice("₹300","₹200")}>₹300-₹200</button>
-    <button className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white' onClick={()=> filterPrice("₹400","₹300")}>₹400-₹300</button>
-    <button className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'  onClick={()=> filterPrice("₹500","₹400")}>₹500-₹400</button>
+    <button className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white' onClick={()=> filterPrice("200","0")}>Below ₹200</button>
+    <button className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white' onClick={()=> filterPrice("300","200")}>₹300-₹200</button>
+    <button className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white' onClick={()=> filterPrice("400","300")}>₹400-₹300</button>
+    <button className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'  onClick={()=> filterPrice("500","400")}>₹500-₹400</button>
     </div>
     
     </div>
