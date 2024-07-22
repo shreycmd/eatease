@@ -3,8 +3,10 @@ import Nav from "./component/Nav"
 import Hero from "./component/Hero"
 import Headlinecards from "./component/Headlinecards"
 import Foods from "./component/Foods"
-import Foodcard from "./component/Foodcard"
+
 import Cat from "./component/Cat"
+import { BrowserRouter, Routes } from "react-router-dom"
+import Payment from "./component/Payment"
 function App() {
   const details=[{name:"Sun's out,BOGO's out",
     rest:"Through 8/26",

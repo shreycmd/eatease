@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { data } from '../data/Data'
 import Foodcard from './Foodcard'
+import { carti } from '../Context';
 
 function Foods() {
   const[food,setfood]=useState(data);
@@ -14,7 +15,30 @@ function Foods() {
       return (loprice<item.price)&&(item.price<ulprice)
     }))
   }
+ const {cartitems,setcartitems} =useContext(carti)  
+  
+  
+  
+  const addtoarray=(newitem)=>{
+    setcartitems((prev)=>{
+      const exist=prev.findIndex((ne)=>{ return ne.name==newitem.name})
+      if(exist===-1){
+     
+       return [...prev,{...newitem,quant:1}]
+       
+      }else{
+        const updatedform=[...prev];
+       updatedform[exist].quant+=1;
+        
+        return updatedform
+      }
+    })
+  }
+    
+  
+  console.log(cartitems)
   return (
+    
     <div className='max-w-[1640px] mx-auto p-4'>
     <div className=' text-4xl text-center text-orange-600 font-bold'>
     <p >Top Rated Menu Items</p></div>
@@ -40,8 +64,8 @@ function Foods() {
     
     </div>
     <div className=' grid grid-cols-2  lg:grid-cols-4 gap-6 pt-10 m-4'>
-    {food.map((item,index)=>(<div  className="hover:scale-110 duration-200 hover:cursor-pointer"key={index}>
-      <Foodcard name={item.name} img={item.image} price={item.price}/>
+    {food.map((item,index)=>(<div  className="hover:scale-110 duration-200 hover:cursor-pointer" key={index} >
+      <Foodcard name={item.name} img={item.image} price={item.price} onClick={()=>(addtoarray(item))}/>
       </div>
 
     ))}
